@@ -1,9 +1,7 @@
 import * as convert from './convert';
 import { units, pluralUnits } from './units';
 import { repeatingFractions } from './repeatingFractions';
-import * as Natural from 'natural';
-
-const nounInflector = new Natural.NounInflector();
+import pluralize from 'pluralize'
 
 export interface Ingredient {
   ingredient: string;
@@ -117,7 +115,7 @@ export function prettyPrintingPress(ingredient: Ingredient) {
       quantity += quantity ? ' ' + fractional : fractional;
     }
     if (((+whole !== 0 && typeof remainder !== 'undefined') || +whole > 1) && unit) {
-      unit = nounInflector.pluralize(unit);
+      unit = pluralize(unit);
     }
   } else {
     return ingredient.ingredient;
