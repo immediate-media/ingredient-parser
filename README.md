@@ -1,25 +1,29 @@
-# recipe-ingredient-parser-v2
+# Ingredient parser
 
-Natural language parser for recipes and lists of ingredients. Can parse a string into an object and also combine an array of these ingredient objects.
+ Parser for ingredients. Can parse a string into an object and also combine an array of these ingredient objects.
 
 ## About
 
-This project was built on top of code written by [mackenziefernandez](https://github.com/mackenziefernandez/recipe-parser).
-
-What's different from the original?
-
-- contains some extra units (including units like `large`, `pinch`, etc.).
-- can parse and combine ingredients that have a quatity range (for example '1-2 eggs')
-- assumes that any clarifications in an ingredient (in parentheses), should be placed at the end of the ingredient, not at the beginning. For example "1-2 eggs (brown eggs preferrably)" instead of "1-2 (brown eggs preferrably) eggs"
-- will *eventually* handle combining  with different units (for example, combining `45 mL milk` and `6 cups milk`)
+This project was forked  written by [nsafai/recipe-parser](https://github.com/nsafai/recipe-parser) which was in turn built on top of a project created by [mackenziefernandez/recipe-parser](https://github.com/mackenziefernandez/recipe-parser). We needed a way to parse some ingredients on the Good Food app and found these packages useful save for the fact that they didn't actually work due to a dependency on Natural which required the used of `node:fs` which doesn't exist in a React Native app. To work around this, we used the pluralize library instead of Natural as that was the only usage.
 
 ## To install
 
-`npm install recipe-ingredient-parser-v2` or `yarn add recipe-ingredient-parser-v2`
+Install the package directly from github as it is not released on npm.
+
+```sh
+npm i https://github.com/immediate-media/ingredient-parser
+
+# or 
+
+yarn add https://github.com/immediate-media/ingredient-parser
+
+```
 
 ## To use
 
-`import { parse } from 'recipe-ingredient-parser-v2';`
+```ts
+import { parse } from '@immediate/ingredient-parser';
+```
 
 And then use on a string, for example:
 `parse('1 teaspoon basil');`
